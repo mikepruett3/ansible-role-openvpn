@@ -1,0 +1,7 @@
+---
+# Debian tasks file for ansible-role-openvpn
+
+- name: "Install the OpenVPN package"
+  apt:
+    name: "openvpn"
+    state: present

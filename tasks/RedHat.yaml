@@ -1,0 +1,32 @@
+---
+# RedHat tasks file for ansible-role-openvpn
+
+- name: "Install the EPEL Repository (yum)"
+  yum:
+    name: "epel-release"
+    state: present
+  when:
+    - ansible_facts['pkg_mgr'] == 'yum'
+
+- name: "Install the EPEL Repository (dnf)"
+  dnf:
+    name: "epel-release"
+    state: present
+  when:
+    - ansible_facts['pkg_mgr'] == 'dnf'
+
+- name: "Install the OpenVPN package (yum)"
+  yum:
+    name: "openvpn"
+    state: present
+  register: install
+  when:
+    - ansible_facts['pkg_mgr'] == 'yum'
+
+- name: "Install the OpenVPN package (dnf)"
+  dnf:
+    name: "openvpn"
+    state: present
+  register: install
+  when:
+    - ansible_facts['pkg_mgr'] == 'dnf'
