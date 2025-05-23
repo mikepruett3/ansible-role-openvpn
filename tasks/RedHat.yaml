@@ -19,7 +19,6 @@
   yum:
     name: "openvpn"
     state: present
-  register: install
   when:
     - ansible_facts['pkg_mgr'] == 'yum'
 
@@ -27,6 +26,5 @@
   dnf:
     name: "openvpn"
     state: present
-  register: install
   when:
     - ansible_facts['pkg_mgr'] == 'dnf'
